@@ -1,0 +1,28 @@
+<BottomNavigation>
+    <TabStrip iosIconRenderingMode="alwaysOriginal">
+
+        <TabStripItem>
+            <Label text="New Task"></Label>
+        </TabStripItem>
+        <TabStripItem>
+            <Label text="Browse Tasks"></Label>
+        </TabStripItem>
+        <TabStripItem>
+            <Label text="Account"></Label>
+        </TabStripItem>
+
+    </TabStrip>
+
+    <TabContentItem>
+        <router-outlet name="newTaskTab"></router-outlet>
+    </TabContentItem>
+
+    <TabContentItem>
+        <router-outlet name="browseTasksTab"></router-outlet>
+    </TabContentItem>
+
+    <TabContentItem>
+        <router-outlet name="accountsTab"></router-outlet>
+    </TabContentItem>
+
+</BottomNavigation>
