@@ -1,0 +1,172 @@
+Index: src/app/home/home.component.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/app/home/home.component.ts	(revision 259620a66c19ed3fed828732c4f66e2a3f1a742c)
++++ src/app/home/home.component.ts	(date 1597314263325)
+@@ -16,8 +16,9 @@
+     }
+ 
+     ngOnInit() {
++        console.log('ngOnInit')
+         this.routerExtension.navigate(
+-            [{ outlets: { newTaskTab: ["create"], browseTasksTab: ["browse"], accountsTab: ["account"] } }],
++            [{ outlets: { newTaskTab: ["create"], browseTasksTab: ["browse"], accountsTab: ["accounts"] } }],
+             { relativeTo: this.activeRoute }
+         )
+             .then(r => console.log("Navigation success: ", r))
+Index: src/app/home/home.component.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/app/home/home.component.html	(revision 259620a66c19ed3fed828732c4f66e2a3f1a742c)
++++ src/app/home/home.component.html	(date 1597313652338)
+@@ -14,15 +14,21 @@
+     </TabStrip>
+ 
+     <TabContentItem>
+-        <router-outlet name="newTaskTab"></router-outlet>
++        <StackLayout>
++            <page-router-outlet name="newTaskTab"></page-router-outlet>
++        </StackLayout>
+     </TabContentItem>
+ 
+     <TabContentItem>
+-        <router-outlet name="browseTasksTab"></router-outlet>
++        <StackLayout>
++            <page-router-outlet name="browseTasksTab"></page-router-outlet>
++        </StackLayout>
+     </TabContentItem>
+ 
+     <TabContentItem>
+-        <router-outlet name="accountsTab"></router-outlet>
++        <StackLayout>
++            <page-router-outlet name="accountsTab"></page-router-outlet>
++        </StackLayout>
+     </TabContentItem>
+ 
+ </BottomNavigation>
+Index: tsconfig.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- tsconfig.json	(revision 259620a66c19ed3fed828732c4f66e2a3f1a742c)
++++ tsconfig.json	(date 1597308969581)
+@@ -15,7 +15,7 @@
+       "baseUrl": ".",
+       "paths": {
+           "~/*": [
+-              "app/*"
++              "src/*"
+           ]
+       }
+   },
+@@ -31,4 +31,4 @@
+       "platforms",
+       "e2e"
+   ]
+-}
+\ No newline at end of file
++}
+Index: src/app/home/home-routing.module.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/app/home/home-routing.module.ts	(revision 259620a66c19ed3fed828732c4f66e2a3f1a742c)
++++ src/app/home/home-routing.module.ts	(date 1597314110705)
+@@ -5,25 +5,26 @@
+ import { HomeComponent } from "./home.component";
+ 
+ const routes: Routes = [
++    {path: "", redirectTo: "tabs"},
+     {
+-        path: "", component: HomeComponent, children: [
++        path: "tabs", component: HomeComponent, children: [
+             {
+                 path: "create",
+                 outlet: "newTaskTab",
+                 component: NSEmptyOutletComponent,
+-                loadChildren: () => import("../create/create.module").then(m => m.CreateModule)
++                loadChildren: () => import("~/app/create/create.module").then(m => m.CreateModule)
+             },
+             {
+                 path: "browse",
+                 outlet: "browseTasksTab",
+                 component: NSEmptyOutletComponent,
+-                loadChildren: () => import("../browse/browse.module").then(m => m.BrowseModule)
++                loadChildren: () => import("~/app/browse/browse.module").then(m => m.BrowseModule)
+             },
+             {
+                 path: "accounts",
+                 outlet: "accountsTab",
+                 component: NSEmptyOutletComponent,
+-                loadChildren: () => import("../account/account.module").then(m => m.AccountModule)
++                loadChildren: () => import("~/app/account/account.module").then(m => m.AccountModule)
+             }
+         ]
+     }
+Index: src/app/account/account.component.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/app/account/account.component.ts	(revision 259620a66c19ed3fed828732c4f66e2a3f1a742c)
++++ src/app/account/account.component.ts	(date 1597311142100)
+@@ -11,6 +11,7 @@
+     }
+ 
+     ngOnInit(): void {
++        console.log('ngOnInit')
+     }
+ 
+ }
+Index: src/app/create/create.component.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/app/create/create.component.ts	(revision 259620a66c19ed3fed828732c4f66e2a3f1a742c)
++++ src/app/create/create.component.ts	(date 1597309133568)
+@@ -11,6 +11,7 @@
+     }
+ 
+     ngOnInit(): void {
++        console.log('ngOnInit')
+     }
+ 
+ }
+Index: src/app/browse/browse.component.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/app/browse/browse.component.ts	(revision 259620a66c19ed3fed828732c4f66e2a3f1a742c)
++++ src/app/browse/browse.component.ts	(date 1597311142097)
+@@ -11,6 +11,7 @@
+     }
+ 
+     ngOnInit(): void {
++        console.log('ngOnInit')
+     }
+ 
+ }
+Index: src/app/app-routing.module.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/app/app-routing.module.ts	(revision 259620a66c19ed3fed828732c4f66e2a3f1a742c)
++++ src/app/app-routing.module.ts	(date 1597313577677)
+@@ -6,7 +6,7 @@
+     { path: "", redirectTo: "home", pathMatch: "full" },
+     {
+         path: "home",
+-        loadChildren: () => import("./home/home.module").then(m => m.HomeModule)
++        loadChildren: () => import("~/app/home/home.module").then(m => m.HomeModule)
+     }
+ ];
+ 

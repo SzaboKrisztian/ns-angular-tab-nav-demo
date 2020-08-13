@@ -11,6 +11,7 @@ export class BrowseComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        console.log('ngOnInit')
     }
 
 }

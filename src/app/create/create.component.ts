@@ -11,6 +11,7 @@ export class CreateComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        console.log('ngOnInit')
     }
 
 }
