@@ -5,25 +5,26 @@ import { NativeScriptRouterModule, NSEmptyOutletComponent } from "@nativescript/
 import { HomeComponent } from "./home.component";
 
 const routes: Routes = [
+    {path: "", redirectTo: "tabs"},
     {
-        path: "", component: HomeComponent, children: [
+        path: "tabs", component: HomeComponent, children: [
             {
                 path: "create",
                 outlet: "newTaskTab",
                 component: NSEmptyOutletComponent,
-                loadChildren: () => import("../create/create.module").then(m => m.CreateModule)
+                loadChildren: () => import("~/app/create/create.module").then(m => m.CreateModule)
             },
             {
                 path: "browse",
                 outlet: "browseTasksTab",
                 component: NSEmptyOutletComponent,
-                loadChildren: () => import("../browse/browse.module").then(m => m.BrowseModule)
+                loadChildren: () => import("~/app/browse/browse.module").then(m => m.BrowseModule)
             },
             {
-                path: "accounts",
-                outlet: "accountsTab",
+                path: "account",
+                outlet: "accountTab",
                 component: NSEmptyOutletComponent,
-                loadChildren: () => import("../account/account.module").then(m => m.AccountModule)
+                loadChildren: () => import("~/app/account/account.module").then(m => m.AccountModule)
             }
         ]
     }

@@ -14,15 +14,21 @@
     </TabStrip>
 
     <TabContentItem>
-        <router-outlet name="newTaskTab"></router-outlet>
+        <StackLayout>
+            <page-router-outlet name="newTaskTab"></page-router-outlet>
+        </StackLayout>
     </TabContentItem>
 
     <TabContentItem>
-        <router-outlet name="browseTasksTab"></router-outlet>
+        <StackLayout>
+            <page-router-outlet name="browseTasksTab"></page-router-outlet>
+        </StackLayout>
     </TabContentItem>
 
     <TabContentItem>
-        <router-outlet name="accountsTab"></router-outlet>
+        <StackLayout>
+            <page-router-outlet name="accountTab"></page-router-outlet>
+        </StackLayout>
     </TabContentItem>
 
 </BottomNavigation>

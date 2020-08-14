@@ -16,8 +16,9 @@ export class HomeComponent {
     }
 
     ngOnInit() {
+        console.log('ngOnInit')
         this.routerExtension.navigate(
-            [{ outlets: { newTaskTab: ["create"], browseTasksTab: ["browse"], accountsTab: ["account"] } }],
+            [{ outlets: { newTaskTab: ["create"], browseTasksTab: ["browse"], accountTab: ["account"] } }],
             { relativeTo: this.activeRoute }
         )
             .then(r => console.log("Navigation success: ", r))
